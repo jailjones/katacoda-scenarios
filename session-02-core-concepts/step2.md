@@ -47,7 +47,7 @@ Let's apply it!
 
 `kubectl apply -f replica-set-v1.yaml`{{copy}}
 
-Now, let's get some information about the ReplicaSet we just deployed:
+Now, let's get some information about the ReplicaSet we just deployed (this command will list all ReplicaSets, but if there's only 1 available, K8s will get some additional details):
 
 `kubectl get replicasets`{{copy}}
 
