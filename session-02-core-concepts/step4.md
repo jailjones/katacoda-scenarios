@@ -63,3 +63,5 @@ Instead, the Deployment manages ReplicaSets and orchestrates the rolling update.
 ![Replica Set 2](/k8s-workshop/scenarios/session-02-core-concepts/assets/rolling-replicaset-11.png)
 
 ---
+
+# How about we see this in action?

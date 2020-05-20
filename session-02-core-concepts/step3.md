@@ -95,7 +95,7 @@ Alright, let's create a deployment we listed above, keep in mind we're choosing 
 
 > **NOTE:** If you're curious you can `cat` the deployment.yml and see exactly what we're applying `cat deployment.yml`
 
-`kubectl apply -f deployment.yaml`{{copy}}
+`kubectl apply -f deployment-v1.yaml`{{copy}}
 
 Now, let's get some information about the ReplicaSet we just deployed (this command will list all Deployments, but if there's only 1 available, K8s will get some additional details):
 
@@ -103,6 +103,10 @@ Now, let's get some information about the ReplicaSet we just deployed (this comm
 
 More detail:
 
-`kubectl get replicaset k8s-bootcamp-deployment -o yaml | yh`{{copy}}
+`kubectl get deployment k8s-bootcamp-deployment -o yaml | yh`{{copy}}
 
 What are some of the things that you noticed? How about `spec.revisionHistoryLimit`? By default Kubernetes stores the last `10` ReplicaSets and lets you roll back to any of them. But you can change how many ReplicaSets should be retained by changing the `spec.revisionHistoryLimit` in your Deployment.
+
+Take note that we are version 1.0.0 of our application - `learnk8s/hello:1.0.0`
+
+What happens when we deploy a new version? Let's find out!

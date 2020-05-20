@@ -57,7 +57,15 @@ More detail:
 
 You'll likely notice some interesting tidbits, but don't worry, we'll likely cover these in the following sections, and if we don't please ask us questions.
 
-Remember that a ReplicaSet can hold only a single type of Pod, so you can't have version 1 and version 2 of the Pods in the same ReplicaSet. 
+Remember that a ReplicaSet can hold only a single type of Pod, so you can't have version 1 and version 2 of the Pods in the same ReplicaSet. We can try this by deploying a newer version of our application image: `learnk8s/hello:2.0.0`
+
+`kubectl apply -f replica-set-v2.yaml`{{copy}}
+
+Now let's try getting a list of ReplicaSets:
+
+`kubectl get replicasets`{{copy}}
+
+No luck? Kubernetes replaces the previous ReplicaSet with the newly applied one - functioning as intended.
 
 ---
 
