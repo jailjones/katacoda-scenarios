@@ -64,7 +64,15 @@
           "target": "~/"
         },
         {
-          "file": "deployment.yaml",
+          "file": "deployment-v1.yaml",
+          "target": "~/"
+        },
+        {
+          "file": "deployment-v2.yaml",
+          "target": "~/"
+        },
+        {
+          "file": "deployment-v3.yaml",
           "target": "~/"
         },
         {

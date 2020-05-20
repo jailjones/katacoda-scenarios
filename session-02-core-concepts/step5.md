@@ -6,7 +6,7 @@ Then let's also list out the ReplicaSets that we have:
 
 `kubectl get replicasets`{{copy}}
 
-We should be seeing the ReplicaSet we deployed in **Step 2** along with the ReplicaSet that's managed by our Deployment in **Step 3**
+We should be seeing the ReplicaSet we deployed in **Step 2** along with the ReplicaSet that's managed by our Deployment in **Step 3**.
 
 ---
 
