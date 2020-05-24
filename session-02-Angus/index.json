@@ -1,0 +1,34 @@
+{
+  "title": "Session 2 - Pods & Containers",
+  "description": "Learning about the basic components of an application running on Kubernetes",
+  "difficulty": "Beginner",
+  "time": "10-20 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Just what is a pod?",
+        "text": "pod-step1.md"
+      }
+    ],
+    "intro": {
+      "text": "pod-intro.md"
+    },
+    "finish": {
+      "text": "pod-finish.md"
+    },
+    "assets": {
+      "client": [
+        {
+          "file": "replica-set-v1.yaml",
+          "target": "~/"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "uilayout": "terminal"
+  },
+  "backend": {
+    "imageid": "kubernetes-cluster-running"
+  }
+}
