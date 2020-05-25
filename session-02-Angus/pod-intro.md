@@ -48,6 +48,30 @@ An example from the official docs: you might have a Container that acts as a web
 
 The separate Containers can be given different security permissions and hardening: the web server should only have read access to the shared Volume, while the updater can write to the shared Volume but can't affect anything else in the web server's Container.
 
+### Volume Lifecycle
+
+Volumes only last as long as the Pod that created them. If one or more Containers is restarted inside a Pod, the replacement Container will have access to the same Volume, including all the changes that have happened.
+
+If a Pod dies, however, any Volumes it contained are lost. New Pods that kubernetes starts to replace the dead Pod will have fresh Volumes with no data.
+
+---
+
+# Lab: inter-Pod communication
+
+---
+
 ## PersistentVolumes
 
-Pods and their Containers use ephemeral storage by default: any files you edit or save in a Container will be lost once the Container shuts down. 
+To enable long-term data storage, that lasts longer than a Pod's lifecycle, kubernetes provides PersistentVolumes and PersistentVolumeClaims. Containers access these like any other Volume, but kubernetes keeps track of changes and manages persisting them over time.
+
+The PersistentVolumes are set up by the cluster administrators, sort of like Nodes. In the same way that a Node is an abstraction that can respresent any variety of hardware or cloud servers, a PersistentVolume is an abstraction over any type of persistent storage. The official docs give the examples of a Google Compute Engine persistent disk, an NFS share, or an Amazon Elastic Block Store volume.
+
+> It's possible to configure multiple types of PersistentVolumes in a cluster, and then configure each individual Pod to use a particular type of PV based on performance, cost, or features of the underlying storage system.
+
+The app developer creates Pods to use the cluster's Nodes, and creates PersistentVolumeClaims to use the cluster's PersistentVolumes.
+
+---
+
+# Bonus Lab: PersistentVolume
+
+Adapted from https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/
