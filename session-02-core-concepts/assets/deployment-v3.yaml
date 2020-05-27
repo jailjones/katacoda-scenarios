@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
       - name: app
-        image: learnk8s/hello:3.0.0
+        image: gcr.io/google-containers/busybox

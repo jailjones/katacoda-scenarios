@@ -23,7 +23,7 @@ spec:
     type: RollingUpdate
     rollingUpdate:
         maxSurge: 25%
-        maxUnavailable: 25%  
+        maxUnavailable: 25%
   selector:
     matchLabels:
       name: app
