@@ -43,7 +43,7 @@ Let's understand a few concepts before proceeding:
 
 Let's apply it!
 
-> **NOTE:** If you're curious you can `cat` the deployment.yml and see exactly what we're applying `cat deployment.yaml | yh`{{copy}}
+> **NOTE:** If you're curious you can `cat` the deployment.yml and see exactly what we're applying `cat replica-set-v1.yaml | yh`{{copy}}
 
 `kubectl apply -f replica-set-v1.yaml`{{copy}}
 
