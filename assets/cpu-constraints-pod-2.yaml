@@ -1,0 +1,14 @@
+admin/resource/cpu-constraints-pod-2.yaml 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: constraints-cpu-demo-2
+spec:
+  containers:
+  - name: constraints-cpu-demo-2-ctr
+    image: nginx
+    resources:
+      limits:
+        cpu: "1.5"
+      requests:
+        cpu: "500m"

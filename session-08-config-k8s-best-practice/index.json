@@ -1,0 +1,43 @@
+{
+  "title": "Configuring your Cluster Best Practices",
+  "description": "Steps on how to setup up a K8s cluster utilizing industry best practices",
+  "difficulty": "Beginner",
+  "time": "30",
+  "details": {
+    "assets": {
+      "host01": [
+          {"file": "cpu-constraints.yaml", "target": "/root/", "chmod": "+rwx"},
+          {"file": "cpu-constraints-pod.yaml", "target": "/root/", "chmod": "+rwx"},
+          {"file": "cpu-constraints-pod-2.yaml", "target": "/root/", "chmod": "+rwx"},
+          {"file": "cpu-constraints-pod-3.yaml", "target": "/root/", "chmod": "+rwx"},
+          {"file": "cpu-constraints-pod-4.yaml", "target": "/root/", "chmod": "+rwx"}
+      ]
+  },
+    "steps": [
+      {
+        "title": "Step 1",
+        "text": "step1.md"
+      },
+      {
+        "title": "Step 2",
+        "text": "step2.md"
+      },
+      {
+        "title": "Step 3",
+        "text": "step3.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "uilayout": "editor-terminal"
+  },
+  "backend": {
+    "imageid": "minikube-running"
+  }
+}
