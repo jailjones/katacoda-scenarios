@@ -1,3 +1,5 @@
+## Deployments
+
 Let's remember how our ReplicaSet looked like:
 
 ```yml
@@ -107,6 +109,6 @@ More detail:
 
 What are some of the things that you noticed? How about `spec.revisionHistoryLimit`? By default Kubernetes stores the last `10` ReplicaSets and lets you roll back to any of them. But you can change how many ReplicaSets should be retained by changing the `spec.revisionHistoryLimit` in your Deployment.
 
-Take note that we are version 1.0.0 of our application - `learnk8s/hello:1.0.0`
+Take note that we are version 1.0.0 of our application - `gcr.io/google-samples/hello-app:1.0`
 
 What happens when we deploy a new version? Let's find out!

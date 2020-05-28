@@ -1,3 +1,5 @@
+## What happens when you create a Deployment?
+
 Kubernetes and kubectl offer a simple mechanism to roll back changes to resources such as Deployments, StatefulSets and DaemonSets.
 
 But before talking about rollbacks, you should learn an important detail about Deployments.

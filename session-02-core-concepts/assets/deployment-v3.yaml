@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
       - name: app
-        image: gcr.io/google-containers/busybox
+        image: gcr.io/google-samples/hello-go-gke:1.0

@@ -3,8 +3,6 @@ Kuberentes provides a built-in rollback mechanism. There are several strategies 
 
 What is a rolling update strategy? The rolling update cycles previous Pods out and brings in newer Pods incrementally.
 
-This lab was sourced from [https://learnk8s.io/kubernetes-rollbacks](https://learnk8s.io/kubernetes-rollbacks), this site contains many great tutorials and visual aids to get you started on your k8s journey.
-
 Before we get our hands dirty, let's understand what actually happens when a **Deployment** is updated.
 
 ---
@@ -88,8 +86,6 @@ Before we get our hands dirty, let's understand what actually happens when a **D
 
 Zero-downtime deployment is convenient when you wish not to interrupt your live traffic.
 
-You can deploy as many time as you want and your user won't be able to notice the difference.
+You can deploy as many times as you want and your users won't be able to notice the difference.
 
 However, even if you use techniques such as Rolling updates, there's still risk that your application doesn't work the way you expect it at the end of the deployment. So you should have a plan to roll back the change.
-
-# Let's dig in a little bit deeper!

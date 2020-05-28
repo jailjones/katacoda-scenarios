@@ -1,3 +1,5 @@
+## Let's see this in action...
+
 Let's consider the following scenario:
 - You have a Deployment with a container on version 1 and three replicas.
 - You change the spec for your template and upgrade your container from version 1 to version 2.

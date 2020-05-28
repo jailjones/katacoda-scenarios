@@ -1,3 +1,4 @@
+## ReplicaSets
 ### Before we start
 - **We recommend that you type out the commands to become more familiar with `kubectl` but you can also copy them to save time!**
 - **If you're feeling stuck with `kubectl` don't forget about the `-h` `--help` swtich**

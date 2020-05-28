@@ -1,3 +1,5 @@
+## Multiple Deployments
+
 Let's quickly pull some information on our previous Deployment:
 
 `kubectl get deployment k8s-bootcamp-deployment -o yaml | yh`{{copy}}
@@ -8,7 +10,7 @@ Then let's also list out the ReplicaSets that we have:
 
 We should be seeing the ReplicaSet we deployed in **Step 2** along with the ReplicaSet that's managed by our Deployment in **Step 3**.
 
-Let's bump the version of our deployed application by applying another Deployment `image: learnk8s/hello:1.0.0` --> `image: learnk8s/hello:2.0.0`
+Let's bump the version of our deployed application by applying another Deployment `/hello-app:1.0` --> `/hello-app:2.0`
 
 ```yml
 apiVersion: apps/v1
@@ -43,8 +45,6 @@ Now let's check our ReplicaSets, and see if you notice something different?
 
 We should now see an additional ReplicaSet that's managed by our Deployment. Awesome! Let's deploy another version of our application.
 
-This time we're bumping from `image: learnk8s/hello:2.0.0` --> `image: learnk8s/hello:3.0.0`
-
 `kubectl apply -f deployment-v3.yaml`{{copy}}
 
 Once again, let's check our ReplicaSets:
@@ -71,3 +71,19 @@ Now that we the knowledge, let's take a look at our last Deployment one more tim
 
 `kubectl get deployment k8s-bootcamp-deployment -o yaml | yh`{{copy}}
 
+Let's focus on `spec.revisionHistoryLimit: 10`
+
+```yml
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+```
+
+What else do we see? You might have noticed that we deployed a different app image all together:
+
+```yml
+image: gcr.io/google-samples/hello-go-gke:1.0
+```
+
+What if this isn't what we wanted to do, how do we roll back to `/hello-app:2.0`? It's actually quite easy, let's dive right in!
