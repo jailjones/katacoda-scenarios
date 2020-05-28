@@ -95,7 +95,7 @@ Let's understand what the fields under `strategy.type.rollingUpdate` indicate.
 
 Alright, let's create a deployment we listed above, keep in mind we're choosing not to explicity define the `strategy` and are instead letting Kubernetes apply the defaults.
 
-> **NOTE:** If you're curious you can `cat` the deployment.yml and see exactly what we're applying `cat deployment-v1.yml`
+> **NOTE:** If you're curious you can `cat` the deployment.yml and see exactly what we're applying `cat deployment-v1.yml | yh`
 
 `kubectl apply -f deployment-v1.yaml`{{copy}}
 

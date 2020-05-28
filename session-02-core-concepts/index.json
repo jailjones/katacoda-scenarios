@@ -2,7 +2,7 @@
   "title": "Session 2 - Replicas & Deployments",
   "description": "Learning how to deploy and rollback your applications",
   "difficulty": "Beginner",
-  "time": "10-20 minutes",
+  "time": "15-30 minutes",
   "details": {
     "steps": [
       {

@@ -3,7 +3,7 @@
 - **We recommend that you type out the commands to become more familiar with `kubectl` but you can also copy them to save time!**
 - **If you're feeling stuck with `kubectl` don't forget about the `-h` `--help` swtich**
 - **Since we're not specifing a Namespace, all commands and objects created are ran against the `default` Namespace**
-- **We have added a YAML highlighter to make it easier to read outputs, this is not included by default**
+- **We have added a YAML highlighter to make it easier to read outputs**
   - **You will recodnize it's usage after a pipe, like so ` | yh`**
 
 A ReplicaSet ensures that a specified number of pod replicas are running at any given time. The ReplicaSet can hold only a single type of Pod, so you can't have version 1 and version 2 of the Pods in the same ReplicaSet.
@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: learnk8s/hello:1.0.0
+        image: gcr.io/google-samples/hello-app:1.0
 ```
 
 Let's understand a few concepts before proceeding:
@@ -58,7 +58,7 @@ More detail:
 
 You'll likely notice some interesting tidbits, but don't worry, we'll likely cover these in the following sections, and if we don't please ask us questions.
 
-Remember that a ReplicaSet can hold only a single type of Pod, so you can't have version 1 and version 2 of the Pods in the same ReplicaSet. We can try this by deploying a newer version of our application image: `learnk8s/hello:2.0.0`
+Remember that a ReplicaSet can hold only a single type of Pod, so you can't have version 1 and version 2 of the Pods in the same ReplicaSet. We can try this by deploying a newer version of our application image: `/hello-app:2.0`
 
 `kubectl apply -f replica-set-v2.yaml`{{copy}}
 

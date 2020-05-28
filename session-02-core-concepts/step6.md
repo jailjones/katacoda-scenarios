@@ -1,4 +1,4 @@
-# Rollbacks
+# Roll it back!
 
 How do we check previous ReplicaSets directly tied with our Deployment??
 
@@ -10,7 +10,29 @@ We see 3 Revisions of our deployment, let's verify that the last revision is ind
 
 `kubectl rollout history deployment/k8s-bootcamp-deployment --revision=3`{{copy}}
 
-You should see `Image: gcr.io/google-samples/hello-go-gke:1.0`
+You should see:
+
+```
+master $ kubectl rollout history deployment/k8s-bootcamp-deployment --revision=3
+deployment.extensions/k8s-bootcamp-deployment with revision #3
+Pod Template:
+  Labels:       name=app
+        pod-template-hash=576bc6648f
+  Containers:
+   app:
+    Image:      gcr.io/google-samples/hello-go-gke:1.0
+    Port:       <none>
+    Host Port:  <none>
+    Environment:        <none>
+    Mounts:     <none>
+  Volumes:      <none>
+```
+
+```yml
+Image:      gcr.io/google-samples/hello-go-gke:1.0
+```
+
+---
 
 How does the Deployment know their ReplicaSets? Does it store the order in which ReplicaSets are created?
 
@@ -22,9 +44,11 @@ Let's inspect the Deployment with:
 
 Nothing is looking like a list of previous 10 ReplicaSets. Deployments don't hold a reference to their ReplicaSets in the same YAML. Instead, related ReplicaSets are retrieved comparing the template section in YAML. Remember when you learned that Deployments are ReplicaSets with some extra features? Kubernetes uses that information to compare Deployments and ReplicaSets and make sure that they are related.
 
-What about the order? How do you know which one was the last ReplicaSet used? Or the third? Kubernetes stores the revision in the `ReplicaSet.metatada.annotation.`
+What about the order? How do you know which one was the last ReplicaSet used? Or the third? Kubernetes stores the revision in the `ReplicaSet.metatada.annotation.` field
 
-You can inspect the revision with (replacing xxxxxxxx with a random ID):
+You can inspect the revision with (replacing xxxxxxxx with a random ID of one of your ReplicaSets):
+
+`kubectl get replicasets`{{copy}}
 
 `kubectl get replicaset k8s-bootcamp-replicaset k8s-bootcamp-deployment-xxxxxxxx -o yaml | yh`{{copy}}
 
@@ -37,9 +61,22 @@ So, what happens when you find a regression in the current release and decide to
 - The current replicas count is decreased, and the count is gradually increased in the ReplicaSet belonging to revision 2
 - The `deployment.kubernetes.io/revision` annotation is updated. The current ReplicaSet changes from revision 2 to 4
 
-If before the undo you had three ReplicaSets with revision 1, 2 and 3, now you should have 1, 3 and 4.
+Let's check the history one more time:
 
-There's a missing entry in the history: the revision 2 that was promoted to 4.
+`kubectl rollout history deployment/k8s-bootcamp-deployment`{{copy}}
+
+```
+master $ kubectl rollout history deployment/k8s-bootcamp-deployment
+deployment.extensions/k8s-bootcamp-deployment
+REVISION  CHANGE-CAUSE
+1         <none>
+3         <none>
+4         <none>
+```
+
+If before the undo you had three ReplicaSets with revision 1, 2 and 3, now you should have 1, 3 and 4. There's a missing entry in the history: the revision 2 that was promoted to 4.
+
+---
 
 _There's also something else that looks useful but doesn't work quite right._
 
@@ -90,6 +127,8 @@ kubernetes.io/change-cause: kubectl apply --filename=deployment-v1.yaml --record
 Now, if you try to display the history again, you might notice that the same annotation is used in the rollout history command:
 
 `kubectl rollout history deployment/k8s-bootcamp-deployment`{{copy}}
+
+---
 
 The `--record` command can be used with any resource type, but the value is only used in Deployment, DaemonSet, and StatefulSet resources, i.e. resources that can be "rolled out" (see `kubectl rollout -h`).
 
