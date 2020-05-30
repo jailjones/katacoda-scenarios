@@ -19,7 +19,7 @@
     "assets": {
       "client": [
         {
-          "file": "replica-set-v1.yaml",
+          "file": "pod-with-no-volumes.yaml",
           "target": "~/"
         }
       ]

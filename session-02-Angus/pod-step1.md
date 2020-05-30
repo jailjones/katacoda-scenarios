@@ -1,53 +1,52 @@
-# Pods
+# Lab 1: Pods and Containers
 
-Pods are the core abstraction of Kubernetes. Pods are named for "peas in a pod", because each Pod can contain multiple running images, called _Containers_. A single Pod might contain several Containers, each forming one component of a larger app.
+![Volume](/k8s-workshop/scenarios/session-02-Angus/assets/wood-pea-pod-3.png)
 
-For example, a Pod containing a webapp might have several containers:
+## Goals of this lab:
 
-- One Container for the backend MySQL database
-- A second Container for an NGINX frontend web server
-- Several other Containers for microservices to link the frontend and backend.
+1. Deploy a Pod with two Containers
+1. Communicate between the two Containers using `localhost`
+1. Configure the two Containers to use a shared Volume
+1. Communicate between the two Containers using the Volume
 
-Of course, you can also deploy a Pod with just one Container, when that is appropriate for your architecture.
+## 1. Deploy a Pod with two Containers
 
-## Pod Scaling
+Examine the pod-with-no-volumes.yaml file. It contains the definition of a single Pod with two Containers: an NGINX webserver and an empty Busybox image.
 
-The official Kubernetes docs say:
+`cat pod-with-no-volumes.yaml`{{copy}}
 
-> Each Pod is meant to run a single instance of a given application. If you want to scale your application horizontally (to provide more overall resources by running more instances), you should use multiple Pods, one for each instance.
+Send the spec to the kubernetes cluster with kubectl:
 
-Thus, when developing a new app you should design your Pod so it can be horizontally scaled.
+`kubectl apply -f pod-with-no-volumes.yaml`{{copy}}
 
-## Collections of Pods
+`kubectl get pods`
 
-### ReplicaSets
+`kubectl describe pod pod-with-no-volumes`
 
-Pods themselves *don't* deal with issues such as autoscaling, self-healing, or upgrade rollouts. Those are handled by abstractions built on top of Pods: ReplicaSets and Deployments. A ReplicaSet manages several identical Pods and handles autoscaling and self-healing. When the ReplicaSet detects that one of its Pod is unhealthy or unreachable, the ReplicaSet starts a brand new Pod to replace the old one.
+You can see in the `kubectl describe` output that Kubernetes has started two containers:
 
-### Deployments
+## 2. Investigate the Containers
 
-Deployments, in turn, manage ReplicaSets. When you submit an updated Pod spec to the Deployment in kubernetes, the Deployment starts a new ReplicaSet with the new Pod spec. After the new ReplicaSet becomes healthy, the Deployment begins serving from the new ReplicaSet, and deletes the previous one.
+### 2a. Webserver
 
-Using these abstractions allows Pods to ignore most of their own lifecycle. Once a Pod is started on a particular Node, the Pod and all its Containers will remain there for their entire lifecycle. Upgrading Pods and fixing broken Pods both involve starting a brand new Pod from scratch.
+Examine the NGINX logs with:
 
-> Although Pods are the core abstraction of Kubernetes, when working with Kubernetes you will usually create and manage Deployments rather than individual Pods.
+`kubectl logs pod-with-no-volumes -c webserver`
 
-## Communication between Containers
+Enter the NGINX container using exec:
 
-All the Containers in a single Pod can access each other via ports on `localhost` with no configuration.
+`kubectl TODO pod-with-no-volumes -c webserver bash -l`
 
-Communication between different Pods requires configuring a kubernetes Service, which behaves somewhat like both a DNS entry and a firewall rule.
+### 2b. Shell
 
-## Volumes
+The busybox image is a minimal Linux shell, which we'll use for debugging:
 
-By default the Containers in a Pod have separate filesystems, to prevent them from interfering with each other. By using a Volume you can designate a shared storage mount for a Container. Each Container in the same Pod that is also configured with Volume storage can then see and interact with the same files.
+`kubectl logs pod-with-no-volumes -c shell`
 
-An example from the official docs: you might have a Container that acts as a web server for files in a shared Volume, and a separate "sidecar" Container that updates those files from a remote source, as in the following diagram:
+## 3. Connect the Containers with a Volume
 
-![Volume](/k8s-workshop/scenarios/session-02-core-concepts/assets/volume-example.png)
+TODO
 
-The separate Containers can be given different security permissions and hardening: the web server should only have read access to the shared Volume, while the updater can write to the shared Volume but can't affect anything else in the web server's Container.
+## 4. Confirm the two Containers are communicating
 
-## PersistentVolumes
-
-Pods and their Containers use ephemeral storage by default: any files you edit or save in a Container will be lost once the Container shuts down. 
+TODO
