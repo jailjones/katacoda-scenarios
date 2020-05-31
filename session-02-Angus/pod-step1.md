@@ -1,6 +1,6 @@
 # Lab 1: Pods and Containers
 
-![Volume](/k8s-workshop/scenarios/session-02-Angus/assets/wood-pea-pod-3.png)
+![Volume](./assets/wood-pea-pod-3.png)
 
 ## Goals of this lab:
 

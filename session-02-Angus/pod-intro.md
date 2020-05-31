@@ -1,7 +1,7 @@
 # Pods
 
-![Peas in a Pod 1](/k8s-workshop/scenarios/session-02-Angus/assets/wood-pea-pod-1.png)
-![Peas in a Pod 2](/k8s-workshop/scenarios/session-02-Angus/assets/wood-pea-pod-2.png)
+![Peas in a Pod 1](./assets/wood-pea-pod-1.png)
+![Peas in a Pod 2](./assets/wood-pea-pod-2.jpg)
 
 Pods are the core abstraction of Kubernetes. Pods are named for "peas in a pod", because each Pod can contain multiple running images, called _Containers_. A single Pod might contain several Containers, each forming one component of a larger app.
 
@@ -47,7 +47,7 @@ By default the Containers in a Pod have separate filesystems, to prevent them fr
 
 An example from the official docs: you might have a Container that acts as a web server for files in a shared Volume, and a separate "sidecar" Container that updates those files from a remote source, as in the following diagram:
 
-![Volume](/k8s-workshop/scenarios/session-02-core-concepts/assets/volumes-example.png)
+![Volume](./assets/volumes-example.png)
 
 The separate Containers can be given different security permissions and hardening: the web server should only have read access to the shared Volume, while the updater can write to the shared Volume but can't affect anything else in the web server's Container.
 
