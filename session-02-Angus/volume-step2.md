@@ -1,6 +1,6 @@
 # Lab 1: Pods and Containers
 
-![Volume](./assets/wood-pea-pod-3.png)
+![Peas in a Pod 2](./assets/wood-pea-pod-3.png)
 
 ## Goals of this lab:
 
@@ -50,3 +50,9 @@ TODO
 ## 4. Confirm the two Containers are communicating
 
 TODO
+
+## 5. Complete
+
+![Peas in a Pod](./assets/old-ad-peas.jpg)
+
+Congratulations, you're done!

@@ -1,7 +1,6 @@
 # Pods
 
 ![Peas in a Pod 1](./assets/wood-pea-pod-1.png)
-![Peas in a Pod 2](./assets/wood-pea-pod-2.jpg)
 
 Pods are the core abstraction of Kubernetes. Pods are named for "peas in a pod", because each Pod can contain multiple running images, called _Containers_. A single Pod might contain several Containers, each forming one component of a larger app.
 
@@ -14,6 +13,8 @@ For example, a Pod containing a webapp might have several containers:
 Of course, you can also deploy a Pod with just one Container, when that is appropriate for your architecture.
 
 ## Pod Scaling
+
+![Peas in a Pod 2](./assets/two-peapods.jpg)
 
 The official Kubernetes docs say:
 

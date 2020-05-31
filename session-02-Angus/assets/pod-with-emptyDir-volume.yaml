@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Pod
+metadata:
+  name: k8s-bootcamp-pods-and-containers
+spec:
+
+  # Volumes available for the Containers
+  volumes:
+  # emptyDir is the simplest Volume kind, it creates a fresh
+  # dir when the Pod is started
+  - name: emptyDirVol
+    emptyDir:
+      medium: memory
+  # configMaps can be exposed through a Volume
+  - name: configVol
+    configMap:
+      name: log-config
+      items:
+        - key: log_level
+          path: log_level
+  # secret Volumes are never persisted
+  - name: secretVol
+  - name: projectionVol
+  
+  # Restart policy for the Pod's Containers
+  restartPolicy: OnFailure
+
+  # Pods have one or more Containers
+  containers:
+
+  - name: webserver
+    image: nginx
+
+  - name: shell
+    image: busybox
+    # command: ['sh', '-c', 'echo "hello kube" && sleep 3600']
+    volumeMounts:
+    - name: config-vol
+      mountPath: /opt/config-vol
