@@ -1,5 +1,5 @@
 {
-  "title": "Session 2 - Pods & Containers v2",
+  "title": "Session 2 - Pods & Containers (2020-5-31 v1)",
   "description": "Learning about the basic components of an application running on Kubernetes",
   "difficulty": "Beginner",
   "time": "10-20 minutes",
@@ -23,11 +23,11 @@
     "assets": {
       "client": [
         {
-          "file": "pod-with-no-volumes.yaml",
+          "file": "pod-two-containers-no-volumes.yaml",
           "target": "~/"
         },
         {
-          "file": "pod-with-emptyDir-volume.yaml",
+          "file": "pod-emptyDir-volume.yaml",
           "target": "~/"
         }
       ]

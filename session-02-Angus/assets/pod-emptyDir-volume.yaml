@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Pod
 metadata:
-  name: k8s-bootcamp-pods-and-containers
+  name: pod-emptyDir-volume
 spec:
 
   # Volumes available for the Containers
@@ -33,7 +33,7 @@ spec:
 
   - name: shell
     image: busybox
-    # command: ['sh', '-c', 'echo "hello kube" && sleep 3600']
+    command: ['sh', '-c', 'echo "hello kube" && sleep 3600']
     volumeMounts:
-    - name: config-vol
-      mountPath: /opt/config-vol
+    - name: emptyDirVol
+      mountPath: /opt/emptyDir
