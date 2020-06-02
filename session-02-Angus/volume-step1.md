@@ -1,6 +1,6 @@
 # Lab 1: Pods and Containers
 
-![Peas in a Pod 2](./assets/wood-pea-pod-2.jpg)
+![Peas in a Pod 2](./assets/wood-pea-pod-3.png)
 
 ## Goals of this lab:
 
@@ -19,9 +19,9 @@ Send the spec to the kubernetes cluster with kubectl:
 
 `kubectl apply -f pod-two-containers-no-volumes.yaml`{{copy}}
 
-`kubectl get pods`
+`kubectl get pods`{{copy}}
 
-`kubectl describe pod pod-two-containers-no-volumes`
+`kubectl describe pod pod-two-containers-no-volumes`{{copy}}
 
 You can see in the `kubectl describe` output that Kubernetes has started two containers:
 
@@ -31,17 +31,17 @@ You can see in the `kubectl describe` output that Kubernetes has started two con
 
 Examine the NGINX logs with:
 
-`kubectl logs pod-two-containers-no-volumes -c webserver`
+`kubectl logs pod-two-containers-no-volumes -c webserver`{{copy}}
 
 Enter the NGINX container using exec:
 
-`kubectl TODO pod-two-containers-no-volumes -c webserver bash -l`
+`kubectl exec pod-two-containers-no-volumes -c webserver -it -- /bin/bash`{{copy}}
 
 ### 2b. Shell
 
-The busybox image is a minimal Linux shell, which we'll use for debugging:
+The centos image is a Linux environment which we'll use for debugging:
 
-`kubectl logs pod-two-containers-no-volumes -c shell`
+`kubectl exec pod-two-containers-no-volumes -c shell -it -- /bin/bash`{{copy}}
 
 ## 3. Connect the Containers with a Volume
 
@@ -53,6 +53,6 @@ TODO
 
 ## 5. Complete
 
-![Peas in a Pod](./assets/wood-pea-pod-3.png)
+![Peas in a Pod](./assets/old-ad-peas.jpg)
 
 Congratulations, you're done!

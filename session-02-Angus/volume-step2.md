@@ -19,9 +19,9 @@ Send the spec to the kubernetes cluster with kubectl:
 
 `kubectl apply -f pod-emptyDir-volume.yaml`{{copy}}
 
-`kubectl get pods`
+`kubectl get pods`{{copy}}
 
-`kubectl describe pod pod-emptyDir-volume`
+`kubectl describe pod pod-emptyDir-volume`{{copy}}
 
 You can see in the `kubectl describe` output that Kubernetes has started two containers:
 
@@ -31,17 +31,17 @@ You can see in the `kubectl describe` output that Kubernetes has started two con
 
 Examine the NGINX logs with:
 
-`kubectl logs pod-emptyDir-volume -c webserver`
+`kubectl logs pod-two-containers-no-volumes -c webserver`{{copy}}
 
 Enter the NGINX container using exec:
 
-`kubectl TODO pod-emptyDir-volume -c webserver bash -l`
+`kubectl exec pod-two-containers-no-volumes -c webserver -it -- /bin/bash`{{copy}}
 
 ### 2b. Shell
 
-The busybox image is a minimal Linux shell, which we'll use for debugging:
+The centos image is a Linux environment which we'll use for debugging:
 
-`kubectl logs pod-emptyDir-volume -c shell`
+`kubectl exec pod-two-containers-no-volumes -c shell -it -- /bin/bash`{{copy}}
 
 ## 3. Connect the Containers with a Volume
 
