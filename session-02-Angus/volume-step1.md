@@ -10,6 +10,15 @@ Send the spec to the kubernetes cluster with kubectl:
 
 `kubectl get pods`{{execute}}
 
+If the Pod is in any state other than `Ready`, wait and retry the `get pods` command until all the Containers are up and running.
+
+```
+NAME                            READY   STATUS    RESTARTS   AGE
+pod-two-containers-no-volumes   2/2     Running   0          29s
+```
+
+Once the Pod is Ready, take a closer look using the `kubectl describe` command:
+
 `kubectl describe pod pod-two-containers-no-volumes`{{execute}}
 
 You can see in the `kubectl describe` output that Kubernetes has started two containers, `webserver` and `shell`

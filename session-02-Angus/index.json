@@ -37,6 +37,10 @@
         {
           "file": "pod-emptyDir-volume.yaml",
           "target": "~/"
+        },
+        {
+          "file": ".bash_profile",
+          "target": "~/"
         }
       ]
     }

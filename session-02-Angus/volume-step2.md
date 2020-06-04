@@ -1,7 +1,7 @@
 
 ## 2. Investigate the Webserver container
 
-Let's examine the webserver Container. Examine the NGINX logs using the `-c webserver` flag:
+Let's examine the webserver Container. Examine the NGINX logs using the `-c webserver` flag to specify the container:
 
 `kubectl logs pod-two-containers-no-volumes -c webserver`{{execute}}
 
@@ -9,7 +9,7 @@ Now enter the NGINX container by using `kubectl exec` with the same container fl
 
 `kubectl exec pod-two-containers-no-volumes -c webserver -it -- /bin/bash`{{execute}}
 
-In Katacoda the prompt should change from `master $` to `root@pod-two-containers-no-volumes:` while you're inside the container.
+In Katacoda the prompt should change from `master $` to `root@pod-two-containers-no-volumes:/#` while you're inside the container.
 
 Inside the container, use `curl` to see the default content from the webserver:
 
