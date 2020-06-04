@@ -1,17 +1,25 @@
 {
-  "title": "Session 2 - Pods & Containers (2020-6-3 v2)",
+  "title": "Session 2 - Pods & Containers (2020-6-4 v1)",
   "description": "Learning about the basic components of an application running on Kubernetes",
   "difficulty": "Beginner",
   "time": "10-20 minutes",
   "details": {
     "steps": [
       {
-        "title": "Just what is a pod?",
+        "title": "Lab Intro",
+        "text": "volume-step0.md"
+      },
+      {
+        "title": "Deploy a Pod with two Containers",
         "text": "volume-step1.md"
       },
       {
-        "title": "And why should anyone care?",
+        "title": "Investigate the Webserver container",
         "text": "volume-step2.md"
+      },
+      {
+        "title": "Use the webserver from the shell",
+        "text": "volume-step3.md"
       }
     ],
     "intro": {
