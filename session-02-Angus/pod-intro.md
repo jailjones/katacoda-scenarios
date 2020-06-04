@@ -12,6 +12,8 @@ For example, a Pod containing a webapp might have several containers:
 
 Of course, you can also deploy a Pod with just one Container, when that is appropriate for your architecture.
 
+---
+
 ## Pod Scaling
 
 ![Peas in a Pod 2](./assets/two-peapods.jpg)
@@ -21,6 +23,8 @@ The official Kubernetes docs say:
 > Each Pod is meant to run a single instance of a given application. If you want to scale your application horizontally (to provide more overall resources by running more instances), you should use multiple Pods, one for each instance.
 
 Thus, when developing a new app you should design your Pod so it can be horizontally scaled.
+
+---
 
 ## Collections of Pods
 
@@ -35,6 +39,10 @@ Deployments, in turn, manage ReplicaSets. When you submit an updated Pod spec to
 Using these abstractions allows Pods to ignore most of their own lifecycle. Once a Pod is started on a particular Node, the Pod and all its Containers will remain there for their entire lifecycle. Upgrading Pods and fixing broken Pods both involve starting a brand new Pod from scratch.
 
 > Although Pods are the core abstraction of Kubernetes, when working with Kubernetes you will usually create and manage Deployments rather than individual Pods.
+
+---
+
+# Inside the Pod
 
 ## Communication between Containers
 
