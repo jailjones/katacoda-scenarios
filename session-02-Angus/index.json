@@ -1,12 +1,12 @@
 {
-  "title": "Session 2 - Pods & Containers (2020-6-8 v6)",
+  "title": "Session 2 - Pods & Containers (2020-6-8 v7)",
   "description": "Learning about the basic components of an application running on Kubernetes",
   "difficulty": "Beginner",
   "time": "10-20 minutes",
   "details": {
     "intro": {
       "text": "pod-intro.md",
-      "courseData": "customize_env.sh"
+      "code": "customize_env.sh"
     },
     "steps": [
       {
