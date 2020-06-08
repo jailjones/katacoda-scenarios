@@ -1,5 +1,5 @@
 {
-  "title": "Session 2 - Pods & Containers (2020-6-8 v2)",
+  "title": "Session 2 - Pods & Containers (2020-6-8 v3)",
   "description": "Learning about the basic components of an application running on Kubernetes",
   "difficulty": "Beginner",
   "time": "10-20 minutes",
@@ -24,6 +24,10 @@
       {
         "title": "Use the webserver from the shell",
         "text": "volume-step3.md"
+      },
+      {
+        "title": "Configure Volumes",
+        "text": "volume-step4.md"
       }
     ],
     "finish": {
