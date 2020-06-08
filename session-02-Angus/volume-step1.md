@@ -41,6 +41,7 @@ Containers:
     State:          Running
       Started:      Wed, 03 Jun 2020 17:07:22 +0000
     ...
+
   shell:
     Image:         centos
     Command:
@@ -50,24 +51,15 @@ Containers:
     State:          Running
       Started:      Wed, 03 Jun 2020 17:07:29 +0000
     ...
+
 Conditions:
-  ...
+
 Volumes:
-  ...
+
 QoS Class:       BestEffort
 Node-Selectors:  <none>
 Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
                  node.kubernetes.io/unreachable:NoExecute for 300s
 Events:
-  Type    Reason     Age    From               Message
-  ----    ------     ----   ----               -------
-  Normal  Pulling    2m58s  kubelet, node01    Pulling image "nginx"
-  Normal  Scheduled  2m58s  default-scheduler  Successfully assigned default/pod-two-containers-no-volumes to node01
-  Normal  Pulled     2m53s  kubelet, node01    Successfully pulled image "nginx"
-  Normal  Created    2m53s  kubelet, node01    Created container webserver
-  Normal  Started    2m53s  kubelet, node01    Started container webserver
-  Normal  Pulling    2m53s  kubelet, node01    Pulling image "centos"
-  Normal  Pulled     2m46s  kubelet, node01    Successfully pulled image "centos"
-  Normal  Created    2m46s  kubelet, node01    Created container shell
-  Normal  Started    2m46s  kubelet, node01    Started container shell
+  ...
 ```

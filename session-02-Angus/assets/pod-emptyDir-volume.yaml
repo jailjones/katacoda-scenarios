@@ -4,36 +4,35 @@ metadata:
   name: pod-emptyDir-volume
 spec:
 
-  # Volumes available for the Containers
   volumes:
   # emptyDir is the simplest Volume kind, it creates a fresh
   # dir when the Pod is started
-  - name: emptyDirVol
-    emptyDir:
-      medium: memory
-  # configMaps can be exposed through a Volume
-  - name: configVol
-    configMap:
-      name: log-config
-      items:
-        - key: log_level
-          path: log_level
-  # secret Volumes are never persisted
-  - name: secretVol
-  - name: projectionVol
-  
-  # Restart policy for the Pod's Containers
+  - name: theSharedVolume
+    emptyDir: {}
+
   restartPolicy: OnFailure
 
-  # Pods have one or more Containers
   containers:
 
   - name: webserver
     image: nginx
+    volumeMounts:
+    - name: theSharedVolume
+      mountPath: /usr/share/nginx/html
 
   - name: shell
-    image: busybox
+    image: centos
     command: ['sh', '-c', 'echo "hello kube" && sleep 3600']
     volumeMounts:
-    - name: emptyDirVol
-      mountPath: /opt/emptyDir
+    - name: theSharedVolume
+      mountPath: /opt/shared_volume
+
+  # init Containers run to completion before starting the other
+  # Containers
+  initContainers:
+  - name: InitializeVolume
+    image: centos
+    volumeMounts:
+    - name: theSharedVolume
+      mountPath: /opt/fresh_volume
+    command: ['sh', '-c', 'echo "<h1>initial page</h1>" > /opt/fresh_volume/index.html && echo "<h1>Error!</h1>" > /opt/fresh_volume/50x.html']
