@@ -26,13 +26,13 @@
       "text": "finish.md"
     },
     "assets": {
-      
+
     }
   },
   "environment": {
     "uilayout": "terminal"
   },
   "backend": {
-    "imageid": "kubernetes-cluster-running"
+    "imageid": "minikube"
   }
 }

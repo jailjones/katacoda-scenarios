@@ -43,9 +43,13 @@ Check the status of the release
 
 ---
 
+## TODO kubectl commands to list deployment, pods, etc
+
+---
+
 Let's interact with our first Helm deployment in the Kubernetes cluster.
 We will log into the MySQL deployment in the cluster.
-###// TODO
+### TODO
 
 ---
 
@@ -56,6 +60,10 @@ Uninstall the release
 
 Verify the release is uninstalled
 `helm list`{{execute}}
+
+---
+
+## TODO kubectl commands to list deployment, pods, etc
 
 ### That's it! Good job on completing this lab and we hope it has introduced some fundementals of Helm CLI
 

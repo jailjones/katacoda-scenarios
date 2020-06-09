@@ -1,6 +1,6 @@
 ## Install Tools
 
-Install kubectl and helm CLI (Command Line Interface) tools
+Install kubectl and Helm CLI (Command Line Interface) tools
 
 ---
 
@@ -21,7 +21,7 @@ Check that kubectl installed correctly
 helm is the CLI tool used to manage deployments of packages to a Kubernetes cluster
 
 Download and Unzip the Helm package from the official Github repo
-`curl -L https://get.helm.sh/helm-v3.2.2-linux-amd64.tar.gz | tar xvz && mv linux-amd64/helm /usr/local/bin/helm`{{copy}}
+`curl -L https://get.helm.sh/helm-v3.2.2-linux-amd64.tar.gz | tar xvz && mv linux-amd64/helm /usr/local/bin/helm`{{execute}}
 
 Check that Helm installed correctly
-`helm version`{{copy}}
+`helm version`{{execute}}

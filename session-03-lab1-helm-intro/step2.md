@@ -17,8 +17,10 @@ Add the repository to your helm installation
 `helm repo add stable https://kubernetes-charts.storage.googleapis.com/`{{execute}}
 With this command, we are adding the repository at https://kubernetes-charts.storage.googleapis.com/ to our local Helm configuration with the name 'stable'. When we want to interact with this repository, we can reference it using its name.
 
-Once this is installed, you will be able to list the charts available in this repository.
+Once the repository is added, you will be able to list the charts available in this repository.
 `helm search repo stable`{{execute}}
+## TODO add what they should see
 
 Verify the repo is added correctly
 `helm repo list`{{execute}}
+## TODO add what they should see
