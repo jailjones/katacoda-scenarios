@@ -15,21 +15,22 @@ Common commands include
 * helm install:   upload the chart to Kubernetes
 * helm list:      list releases of charts
 
-### Run MySQL in Kubernetes cluster
+### Run kubernetes-dashboard in Kubernetes cluster
 
-We will search the official Helm repository for a MySQL chart and install the chart into the locally running Kubernetes cluster
+We will search the official Helm repository for a kubernetes-dashboard chart and install the chart into the locally running Kubernetes cluster
 
-Lets find a MySQL chart.
+Lets find a kubernetes-dashboard chart.
 `helm search repo stable`{{execute}}
 This command returns a comprehensive list of all of the charts available in this repository.
 
 Lets filter the list to only include the type of chart we are interested in
-`helm search repo stable/mysql`{{execute}}
+`helm search repo stable/kubernetes-dashboard`{{execute}}
 
 ---
 
-Let's install the chart into our cluster. With this command we will install the **stable/mysql** chart with a release name of **mysql**
-`helm install stable/mysql --name mysql`{{execute}}
+Let's install the chart into our cluster. With this command we will install the **stable/kubernetes-dashboard** chart with a release name of **kubernetes-dashboard**
+`helm install kubernetes-dashboard stable/kubernetes-dashboard`{{execute}}
+![Helm Install](/k8s-workshop/scenarios/session-03-lab1-helm-intro/assets/helm-install-chart.png)
 
 ---
 
@@ -39,22 +40,19 @@ Verify the release is installed in the cluster
 ---
 
 Check the status of the release
-`helm status mysql`{{execute}}
+`helm status kubernetes-dashboard`{{execute}}
 
 ---
 
-## TODO kubectl commands to list deployment, pods, etc
-
----
-
-Let's interact with our first Helm deployment in the Kubernetes cluster.
-We will log into the MySQL deployment in the cluster.
-### TODO
+Check the status of kubernetes-dashboard using **kubectl** commands
+`kubectl get pods`{{execute}}
+`kubectl get deployments`{{execute}}
+`kubectl get services`{{execute}}
 
 ---
 
 Uninstall the release
-`helm delete mysql`{{execute}}
+`helm delete kubernetes-dashboard`{{execute}}
 
 ---
 
@@ -63,7 +61,10 @@ Verify the release is uninstalled
 
 ---
 
-## TODO kubectl commands to list deployment, pods, etc
+Verify the kubernetes-dashboard components are deleted using **kubectl** commands
+`kubectl get pods`{{execute}}
+`kubectl get deployments`{{execute}}
+`kubectl get services`{{execute}}
 
 ### That's it! Good job on completing this lab and we hope it has introduced some fundementals of Helm CLI
 
@@ -72,8 +73,8 @@ Verify the release is uninstalled
 Before we install the chart into our cluster, we may want to take a look at it to verify it is what we want or to modify it to fit your needs.
 This step is not required to install a chart and can be done optionally
 Fetch the chart using
-`helm fetch stable/mysql`{{execute}}
+`helm fetch stable/kubernetes-dashboard`{{execute}}
 
 Additionally, it is more secure to download the chart and keep a local copy of it with your source code or upload it to a private repository so you can better control version upgrades and dependencies when installing helm charts sourced from public repos.
 Instead of installing the chart directly from a public repository, install it from a private repository that you control or from a local directory.
-`helm install mysql <path_to_local_directory>`
+`helm install kubernetes-dashboard <path_to_local_directory>`
