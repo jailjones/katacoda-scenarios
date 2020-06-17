@@ -13,7 +13,7 @@ Deploy second simple applications.
 
 4. Add following lines to existing ingress service:
 
-    `kubectl edit exmaple-ingress.yaml`{{execute}}
+    `vi example-ingress.yaml`{{execute}}
 
     ```
     - path: /v2/*
@@ -22,6 +22,6 @@ Deploy second simple applications.
             servicePort: 8080
     ```
 
-5. Access second version of the ample application again:
+5. Access second version of the sample application again:
 
     `curl hello-world.info/v2`{{execute}}

@@ -3,15 +3,17 @@ Deploy a simple application.
 
     `kubectl run web --image=gcr.io/google-samples/hello-app:1.0 --port=8080`{{execute}}
 
+    `kubectl get pod`{{execute}}
+
+    `kubectl get service web`{{execute}}
+
 2. Expose the Deployment application.
 
     `kubectl expose deployment web --target-port=8080 --type=NodePort`{{execute}}
 
-3. Verify the deployed service using kubectl command:
-
     `kubectl get service web`{{execute}}
 
-4. Export the NodePort:
+3. Export the NodePort:
 
     `minikube service web --url`{{execute}}
 
