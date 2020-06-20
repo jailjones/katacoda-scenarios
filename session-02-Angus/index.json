@@ -1,5 +1,5 @@
 {
-  "title": "Session 2 - Pods, Containers, and Volumes",
+  "title": "Session 2 - Pods, Containers, and Volumes (2020-6-20 v4)",
   "description": "Learn about the internals of Pods, the basic building block of Kubernetes",
   "difficulty": "Beginner",
   "time": "?? minutes",
