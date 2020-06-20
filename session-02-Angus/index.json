@@ -22,11 +22,11 @@
         "text": "containers-kubectl-describe.md"
       },
       {
-        "title": "Investigate the Webserver container",
+        "title": "Investigate the Webserver Container",
         "text": "containers-examine-webserver.md"
       },
       {
-        "title": "Use the webserver from the shell",
+        "title": "Connect to the Webserver from the shell",
         "text": "containers-webserver-from-shell.md"
       },
       {

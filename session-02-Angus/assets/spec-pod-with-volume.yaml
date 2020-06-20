@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Pod
 metadata:
-  name: pod-emptyDir-volume
+  name: pod-with-volume
 spec:
 
   volumes:

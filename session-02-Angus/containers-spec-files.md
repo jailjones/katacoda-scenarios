@@ -1,8 +1,6 @@
-# Kubernetes YAML spec files
+Examine the spec-pod-2containers.yaml file that has been provided:
 
-Examine the pod-two-containers-no-volumes.yaml file that has been provided:
-
-`cat pod-two-containers-no-volumes.yaml`{{execute}}
+`cat spec-pod-2containers.yaml`{{execute}}
 
 This is a Kubernetes pec file, written in the standard format that Kubernetes uses for all of its resources, from a single Pod to a full-blown Deployment or DaemonSet. At the top you can see some standard keys for spec files:
 
@@ -10,7 +8,7 @@ This is a Kubernetes pec file, written in the standard format that Kubernetes us
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-two-containers-no-volumes
+  name: two-containers
 spec:
   ...
 ```

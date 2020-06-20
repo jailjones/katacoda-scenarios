@@ -1,16 +1,13 @@
-
-# kubectl describe
-
 Once the Pod is Running, take a closer look using the `kubectl describe pod` subcommand:
 
-`kubectl describe pod pod-two-containers-no-volumes`{{execute}}
+`kubectl describe pod two-containers`{{execute}}
 
 This subcommand, like `kubectl get pods`, is a generic command you can use to examine any kind of resource, not just Pods. You can also `kubectl get deployments` and `kubectl describe service $NAME`.
 
 The output is extensive, but you can see our two entries under the `Containers:` key:
 
 ```yaml
-Name:               pod-two-containers-no-volumes
+Name:               two-containers
 Namespace:          default
 Priority:           0
 PriorityClassName:  <none>
@@ -47,7 +44,7 @@ Tolerations:     ...
 Events:
   Type    Reason     Age   From               Message
   ----    ------     ----  ----               -------
-  Normal  Scheduled  27s   default-scheduler  Successfully assigned default/pod-two-containers-no-volumes to node01
+  Normal  Scheduled  27s   default-scheduler  Successfully assigned default/two-containers to node01
   Normal  Pulling    26s   kubelet, node01    Pulling image "nginx"
   Normal  Pulled     19s   kubelet, node01    Successfully pulled image "nginx"
   Normal  Created    19s   kubelet, node01    Created container webserver

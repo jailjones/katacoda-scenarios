@@ -1,5 +1,3 @@
-# PersistentVolumes
-
 To enable long-term data storage, that lasts longer than a Pod's lifecycle, kubernetes provides PersistentVolumes and PersistentVolumeClaims. Containers access these like any other Volume, but kubernetes keeps track of changes and manages persisting them over time.
 
 The PersistentVolumes are set up by the cluster administrators, sort of like Nodes. In the same way that a Node is an abstraction that can respresent any variety of hardware or cloud servers, a PersistentVolume is an abstraction over any type of persistent storage. The official docs give the examples of a Google Compute Engine persistent disk, an NFS share, or an Amazon Elastic Block Store volume.

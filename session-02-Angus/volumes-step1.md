@@ -1,7 +1,3 @@
-
-# 4. Configure a pod with a Volume
-
-
 Examine the pod-emptyDir-volume.yaml file. This contains the same configuration for a Pod with two Containers, but a Volume has been added and configured for both Containers.
 
 `cat pod-emptyDir-volume.yaml`{{execute}}
