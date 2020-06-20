@@ -2,7 +2,7 @@
   "title": "Session 2 - Pods, Containers, and Volumes",
   "description": "Learn about the internals of Pods, the basic building block of Kubernetes",
   "difficulty": "Beginner",
-  "time": "?? minutes",
+  "time": "Twelve Parsecs",
   "details": {
     "intro": {
       "text": "pod-intro.md",
