@@ -1,4 +1,4 @@
-Create an ingree resource in your cluster.
+Create an ingress resource in your cluster.
 1. Run following commands to navigate yourself to file directory with `example-ingress.yaml` file, and apply.
 
     `cd /usr/local/bin/`{{execute}}
