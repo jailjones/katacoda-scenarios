@@ -1,5 +1,5 @@
 {
-  "title": "Session 2 - Pods & Containers (2020-6-8 v8)",
+  "title": "Session 2 - Pods & Containers (2020-6-20 v1)",
   "description": "Learning about the basic components of an application running on Kubernetes",
   "difficulty": "Beginner",
   "time": "10-20 minutes",
@@ -9,10 +9,6 @@
       "code": "customize_env.sh"
     },
     "steps": [
-      {
-        "title": "Lab Intro",
-        "text": "volume-step0.md"
-      },
       {
         "title": "Deploy a Pod with two Containers",
         "text": "volume-step1.md"
@@ -26,8 +22,16 @@
         "text": "volume-step3.md"
       },
       {
+        "title": "Intro to Volumes",
+        "text": "pod-volumes-intro.md"
+      },
+      {
         "title": "Configure Volumes",
         "text": "volume-step4.md"
+      },
+      {
+        "title": "PersistentVolumes",
+        "text": "pod-persistentvolumes-intro.md"
       }
     ],
     "finish": {
