@@ -1,5 +1,5 @@
 {
-  "title": "Session 2 - Pods & Containers (2020-6-20 v1)",
+  "title": "Session 2 - Pods & Containers (2020-6-20 v2)",
   "description": "Learning about the basic components of an application running on Kubernetes",
   "difficulty": "Beginner",
   "time": "10-20 minutes",
@@ -10,28 +10,36 @@
     },
     "steps": [
       {
-        "title": "Deploy a Pod with two Containers",
-        "text": "volume-step1.md"
+        "title": "spec files",
+        "text": "containers-spec-files.md"
+      },
+      {
+        "title": "kubectl apply",
+        "text": "containers-kubectl-apply.md"
+      },
+      {
+        "title": "kubectl apply",
+        "text": "containers-kubectl-describe.md"
       },
       {
         "title": "Investigate the Webserver container",
-        "text": "volume-step2.md"
+        "text": "containers-examine-webserver.md"
       },
       {
         "title": "Use the webserver from the shell",
-        "text": "volume-step3.md"
+        "text": "containers-webserver-from-shell.md"
       },
       {
         "title": "Intro to Volumes",
-        "text": "pod-volumes-intro.md"
+        "text": "volumes-intro.md"
       },
       {
         "title": "Configure Volumes",
-        "text": "volume-step4.md"
+        "text": "volumes-step1.md"
       },
       {
         "title": "PersistentVolumes",
-        "text": "pod-persistentvolumes-intro.md"
+        "text": "pv-intro.md"
       }
     ],
     "finish": {
@@ -40,11 +48,11 @@
     "assets": {
       "client": [
         {
-          "file": "pod-two-containers-no-volumes.yaml",
+          "file": "spec-pod-2containers.yaml",
           "target": "~/"
         },
         {
-          "file": "pod-emptyDir-volume.yaml",
+          "file": "spec-pod-with-volume.yaml",
           "target": "~/"
         }
       ]
