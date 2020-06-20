@@ -1,8 +1,8 @@
 {
-  "title": "Session 2 - Pods & Containers (2020-6-20 v3)",
-  "description": "Learning about the basic components of an application running on Kubernetes",
+  "title": "Session 2 - Pods, Containers, and Volumes",
+  "description": "Learn about the internals of Pods, the basic building block of Kubernetes",
   "difficulty": "Beginner",
-  "time": "10-20 minutes",
+  "time": "?? minutes",
   "details": {
     "intro": {
       "text": "pod-intro.md",
