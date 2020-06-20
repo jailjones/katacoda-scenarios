@@ -22,6 +22,18 @@ You'll see the default NGINX html page. Let's modify that page and confirm that 
 
 `curl localhost:80`{{execute}}
 
-After confirming that NGINX is now serving your custom content, go ahead and return to the katacoda root shell with `exit`{{execute}}:
+After confirming that NGINX is now serving your custom content, go ahead and return to the katacoda root shell.
 
 `exit`{{execute}}
+
+## From outside the Pod
+
+Observe that our webserver is NOT visible from outside of the cluster:
+
+`curl localhost:80`{{execute}}
+
+```
+curl: (7) Failed to connect to localhost port 80: Connection refused
+```
+
+By default Kubernetes doesn't allow any communication between Pods or from a Pod to the outside of the cluster. You would need to configure both a Service for the Pod and Ingress the cluster, in order to access the web server. As we'll see in the next step, the other Container in the Pod _will_ have network access.
