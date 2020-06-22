@@ -9,11 +9,11 @@ Now that you have created your own chart called **mychart** from a template, you
 
   `cp /usr/local/bin/Chart.yaml mychart/.`{{execute}}
 
-  The changed version has a new description and upgrade version number
+  The changed version has a new description and upgraded version number
   ```yaml
   apiVersion: v2
   name: mychart
-  description: A Helm chart for Kubernetes
+  description: My Helm chart for Kubernetes
 
   # A chart can be either an 'application' or a 'library' chart.
   #
@@ -36,59 +36,59 @@ Now that you have created your own chart called **mychart** from a template, you
   appVersion: 1.16.0
   ```
 
-## Lets reinstall the chart
+## Lets upgrade the deployment
 
-Before we install, if you run
+1. Before we install, if you run
 
-`helm list`{{execute}}
+  `helm list`{{execute}}
 
-You should see that the version is **0.1.0**
+  You should see that the version is **0.1.0**
 
-```yaml
-NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART           APP VERSION
-mychart default         1               2020-06-22 16:43:20.782908915 +0000 UTC deployed        mychart-0.1.0   1.16.0
-```
+  ```yaml
+  NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART           APP VERSION
+  mychart default         1               2020-06-22 16:43:20.782908915 +0000 UTC deployed        mychart-0.1.0   1.16.0
+  ```
 
-## Package and Upgrade
+1. Package and Upgrade
 
-Package the chart using **tar**
-`tar -czvf mychart.tgz mychart`{{execute}}
+  Package the chart using **tar**
+  `tar -czvf mychart.tgz mychart`{{execute}}
 
-Check that your chart was packaged correctly
-`ls -l`{{execute}}
-You should see a file called **mychart.tgz**
+  Check that your chart was packaged correctly
+  `ls -l`{{execute}}
+  You should see a file called **mychart.tgz**
 
----
+  ---
 
-Because the chart is already installed, use the **helm upgrade** command to upgrade the chart
+  Because the chart is already installed, use the **helm upgrade** command to upgrade the chart
 
-`helm upgrade mychart mychart.tgz`{{execute}}
+  `helm upgrade mychart mychart.tgz`{{execute}}
 
-See that the **REVISION** has changed to **2**
-```yaml
-Release "mychart" has been upgraded. Happy Helming!
-NAME: mychart
-LAST DEPLOYED: Mon Jun 22 16:46:54 2020
-NAMESPACE: default
-STATUS: deployed
-REVISION: 2
-NOTES:
-1. Get the application URL by running these commands:
-  export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=mychart,app.kubernetes.io/instance=mychart" -o jsonpath="{.items[0].metadata.name}")
-  echo "Visit http://127.0.0.1:8080 to use your application"
-  kubectl --namespace default port-forward $POD_NAME 8080:80
-```
+  See that the **REVISION** has changed to **2**
+  ```yaml
+  Release "mychart" has been upgraded. Happy Helming!
+  NAME: mychart
+  LAST DEPLOYED: Mon Jun 22 16:46:54 2020
+  NAMESPACE: default
+  STATUS: deployed
+  REVISION: 2
+  NOTES:
+  1. Get the application URL by running these commands:
+    export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=mychart,app.kubernetes.io/instance=mychart" -o jsonpath="{.items[0].metadata.name}")
+    echo "Visit http://127.0.0.1:8080 to use your application"
+    kubectl --namespace default port-forward $POD_NAME 8080:80
+  ```
 
----
+  ---
 
-Verify your chart upgraded
-`helm list`{{execute}}
+  Verify your chart upgraded
+  `helm list`{{execute}}
 
-See that the **REVISION** has changed to **2** and the **CHART** is now set to **mychart-0.2.0**
-```yaml
-NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART           APP VERSION
-mychart default         2               2020-06-22 16:46:54.918411351 +0000 UTC deployed        mychart-0.2.0   1.16.0
-```
+  See that the **REVISION** has changed to **2** and the **CHART** is now set to **mychart-0.2.0**
+  ```yaml
+  NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART           APP VERSION
+  mychart default         2               2020-06-22 16:46:54.918411351 +0000 UTC deployed        mychart-0.2.0   1.16.0
+  ```
 
 # Congrats!
 
