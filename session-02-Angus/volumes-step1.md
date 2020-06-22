@@ -1,6 +1,6 @@
 Examine the provided spec-pod-with-volume.yaml file:
 
-`cat spec-pod-with-volume.yaml`{{execute}}
+`cat spec-pod-with-volume.yaml`{{copy}}
 
 This spec contains the same configuration for a Pod with two Containers, but a Volume has been added and configured to attach to both Containers.
 
@@ -8,13 +8,11 @@ Note that each Container will use the same Volume, but with different paths. The
 
 Send the spec to the kubernetes cluster with kubectl:
 
-`kubectl apply -f spec-pod-with-volume.yaml`{{execute}}
+`kubectl apply -f spec-pod-with-volume.yaml`{{copy}}
 
-Now examine the newly-created pods:
+Now watch the newly-created Pod until it's `Running`:
 
 `kubectl get pods`{{execute}}
-
-If the Pod is in any state other than `Running`, wait and retry the `get pods` command until all the Containers are up and running.
 
 ```
 NAME                            READY   STATUS  RESTARTS   AGE

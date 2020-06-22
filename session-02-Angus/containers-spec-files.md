@@ -1,6 +1,6 @@
 Examine the spec-pod-2containers.yaml file that has been provided:
 
-`cat spec-pod-2containers.yaml`{{execute}}
+`cat spec-pod-2containers.yaml`{{copy}}
 
 This is a Kubernetes spec file, which tells Kubernetes about the _requested state_ . At the top you can see some standard keys for spec files:
 

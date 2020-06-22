@@ -1,6 +1,6 @@
 `kubectl` is the CLI tool you use to control a Kubernetes cluster and the apps installed on it. The subcommand `kubectl apply` is used to upload a spec file to the cluster. Send our Pod spec up to the cluster:
 
-`kubectl apply -f spec-pod-2containers.yaml`{{execute}}
+`kubectl apply -f spec-pod-2containers.yaml`{{copy}}
 
 Now examine the newly-created pods:
 

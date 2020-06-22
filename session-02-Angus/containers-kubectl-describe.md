@@ -1,6 +1,6 @@
 Once the Pod is Running, take a closer look using the `kubectl describe pod` subcommand:
 
-`kubectl describe pod two-containers`{{execute}}
+`kubectl describe pod two-containers`{{copy}}
 
 This subcommand, like `kubectl get pods`, is a generic command you can use to examine any kind of resource, not just Pods. You can also use commands such as `kubectl get deployments`, `kubectl describe service`, and similar commands for any kubernetes API object.
 
