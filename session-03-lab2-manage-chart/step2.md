@@ -38,7 +38,7 @@ Now that you have created your own chart called **mychart** from a template, you
 
 ## Lets upgrade the deployment
 
-1. Before we install, if you run
+1. Before we upgrade, if you run
 
   `helm list`{{execute}}
 
