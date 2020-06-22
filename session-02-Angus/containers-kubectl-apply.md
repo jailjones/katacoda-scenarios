@@ -2,7 +2,7 @@
 
 `kubectl apply -f spec-pod-2containers.yaml`{{execute}}
 
-Now examine the running pods:
+Now examine the newly-created pods:
 
 `kubectl get pods`{{copy}}
 

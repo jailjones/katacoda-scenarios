@@ -1,20 +1,22 @@
-Examine the pod-emptyDir-volume.yaml file. This contains the same configuration for a Pod with two Containers, but a Volume has been added and configured for both Containers.
+Examine the provided spec-pod-with-volume.yaml file:
 
-`cat pod-emptyDir-volume.yaml`{{execute}}
+`cat spec-pod-with-volume.yaml`{{execute}}
+
+This spec contains the same configuration for a Pod with two Containers, but a Volume has been added and configured to attach to both Containers.
+
+Note that each Container will use the same Volume, but with different paths. The NGINX Container will mount the Volume at `/usr/share/nginx/html`, which means that NGINX will serve content from the root of the Volume. Additionally, the shell Container has a command to initialize the Volume with a simple index.html file.
 
 Send the spec to the kubernetes cluster with kubectl:
 
-`kubectl apply -f pod-emptyDir-volume.yaml`{{execute}}
+`kubectl apply -f spec-pod-with-volume.yaml`{{execute}}
+
+Now examine the newly-created pods:
 
 `kubectl get pods`{{execute}}
 
-If the Pod is in any state other than `Ready`, wait and retry the `get pods` command until all the Containers are up and running.
+If the Pod is in any state other than `Running`, wait and retry the `get pods` command until all the Containers are up and running.
 
 ```
-NAME                            READY   STATUS    RESTARTS   AGE
-pod-emptyDir-volume   2/2     Running   0          29s
+NAME                            READY   STATUS  RESTARTS   AGE
+pod-with-volume                 2/2     Running 0          12s
 ```
-
-Once the Pod is Ready, take a closer look using the `kubectl describe` command:
-
-`kubectl describe pod pod-emptyDir-volume`{{execute}}

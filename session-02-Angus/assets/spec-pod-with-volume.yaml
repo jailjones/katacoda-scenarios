@@ -2,15 +2,12 @@ apiVersion: apps/v1
 kind: Pod
 metadata:
   name: pod-with-volume
-spec:
+spec:  
+  restartPolicy: OnFailure
 
   volumes:
-  # emptyDir is the simplest Volume kind, it creates a fresh
-  # dir when the Pod is started
   - name: theSharedVolume
     emptyDir: {}
-
-  restartPolicy: OnFailure
 
   containers:
 
@@ -22,17 +19,7 @@ spec:
 
   - name: shell
     image: centos
-    command: ['sh', '-c', 'echo "hello kube" && sleep 3600']
+    command: ['sh', '-c', 'echo "<h1>hello world</h1>" > /opt/shared_volume/index.html && sleep 3600']
     volumeMounts:
     - name: theSharedVolume
       mountPath: /opt/shared_volume
-
-  # init Containers run to completion before starting the other
-  # Containers
-  initContainers:
-  - name: InitializeVolume
-    image: centos
-    volumeMounts:
-    - name: theSharedVolume
-      mountPath: /opt/fresh_volume
-    command: ['sh', '-c', 'echo "<h1>initial page</h1>" > /opt/fresh_volume/index.html && echo "<h1>Error!</h1>" > /opt/fresh_volume/50x.html']

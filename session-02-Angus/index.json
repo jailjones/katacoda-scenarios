@@ -34,12 +34,12 @@
         "text": "volumes-intro.md"
       },
       {
-        "title": "Configure Volumes",
+        "title": "Configure a Volume",
         "text": "volumes-step1.md"
       },
       {
-        "title": "PersistentVolumes",
-        "text": "pv-intro.md"
+        "title": "Investigate the Volume",
+        "text": "volumes-step2.md"
       }
     ],
     "finish": {

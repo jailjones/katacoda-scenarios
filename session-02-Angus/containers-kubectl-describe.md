@@ -2,7 +2,7 @@ Once the Pod is Running, take a closer look using the `kubectl describe pod` sub
 
 `kubectl describe pod two-containers`{{execute}}
 
-This subcommand, like `kubectl get pods`, is a generic command you can use to examine any kind of resource, not just Pods. You can also `kubectl get deployments` and `kubectl describe service $NAME`.
+This subcommand, like `kubectl get pods`, is a generic command you can use to examine any kind of resource, not just Pods. You can also use commands such as `kubectl get deployments`, `kubectl describe service`, and similar commands for any kubernetes API object.
 
 The output is extensive, but you can see our two entries under the `Containers:` key:
 
@@ -55,10 +55,14 @@ Events:
   Normal  Started    12s   kubelet, node01    Started container shell
 ```
 
+## Pod creation process
+
 In the Events section you can see the sequence of things that Kubernetes did to get the Pod up and running:
 
 1. The cluster chooses a Node, a specific piece of hardware, that can support the Pod. All of the Pod's Containers will run on the same Node, and will remain there for the entire life of the Pod. This simplifies the Pod's design, since it doesn't have to concern itself with moving around between Nodes. In the event that a Node is lost, a replacement Pod will be spun up on a different Node.
 1. The cluster pulls down docker images requested by the spec. Our lab images come from the public docker hub, but cluster admins can configure specific hubs to ensure the cluster only runs authorized code.
 1. The cluster creates the Container sub-objects and starts each one. Once all the Containers are up and running, the Pod itself is marked Running.
+
+## init containers
 
 If you want more control over the startup process, you can use _Init Containers_, which run before the primary, "App Containers". Init Containers can do things such as gathering configuration over a network, then storing it on a shared disk for the other Containers to use.
