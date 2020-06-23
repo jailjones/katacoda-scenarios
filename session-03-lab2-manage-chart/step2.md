@@ -52,17 +52,17 @@ Now that you have created your own chart called **mychart** from a template, you
 1. Package and Upgrade
 
   Package the chart using **tar**
-  `tar -czvf mychart.tgz mychart`{{execute}}
+  `helm package ./mychart`{{execute}}
 
   Check that your chart was packaged correctly
   `ls -l`{{execute}}
-  You should see a file called **mychart.tgz**
+  You should see a file called **mychart-0.2.0.tgz**
 
   ---
 
   Because the chart is already installed, use the **helm upgrade** command to upgrade the chart
 
-  `helm upgrade mychart mychart.tgz`{{execute}}
+  `helm upgrade mychart mychart-0.2.0.tgz`{{execute}}
 
   See that the **REVISION** has changed to **2**
   ```yaml

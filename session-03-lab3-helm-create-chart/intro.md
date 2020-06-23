@@ -1,10 +1,7 @@
 # Create your own chart
 
-Now that you have explored some basic commands, we will explore creating a Helm chart from scratch
+Now that you have explored some basic commands and learned how to manage Helm charts, we will explore creating a Helm chart from scratch
 
-## Contents of a Helm Chart
-Helm charts are packaged directories that, at a minimum, must contain these files:
-1. Chart.yaml - A YAML file containing information about the chart
-1. values.yaml - The default configuration values for this chart
-1. templates/ - A directory of templates that, when combined with values, will generate valid Kubernetes manifest files.
-1. charts/ - A directory containing any charts upon which this chart depends
+In this lab, we will create a Helm chart for a Java-Spring application from scratch
+
+First we will create just a chart that only has a **Deployment**. Then we will add a **Service** to the chart. And lastly we will improve our **Deployment** by adding some **resource usage limitations** and **readiness/liveness probes**.

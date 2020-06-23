@@ -15,17 +15,17 @@ You should see a directory called **mychart**
 
 Before we modify the chart, lets package and install your chart
 
-Package the chart using **tar**
-`tar -czvf mychart.tgz mychart`{{execute}}
+Package the chart using **helm package**
+`helm package ./mychart`{{execute}}
 
 Check that your chart was packaged correctly
 `ls -l`{{execute}}
-You should see a file called **mychart.tgz**
+You should see a file called **mychart-0.1.0.tgz**
 
 ---
 
 Now you can install your chart
-`helm install mychart mychart.tgz`{{execute}}
+`helm install mychart mychart-0.1.0.tgz`{{execute}}
 
 ---
 
@@ -49,9 +49,6 @@ Using **curl**, call the service on port 8080 (the forwarded port)
 
 Stop the port forward process
 `kill %1`{{execute}}
-
-Remove the packaged chart
-`rm mychart.tgz`{{execute}}
 
 ## Congrats!
 

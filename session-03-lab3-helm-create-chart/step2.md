@@ -1,55 +1,90 @@
-# Upgrade mychart
+# Add a Service
 
-Now that you have created your own chart called **mychart** from a template, you can modify it to fit your needs
+1. Copy the files from `/usr/local/bin` for **myspringapp2** into **./myspringapp** to add a Service
 
-For example, you may want the service to run on a different port
+  `cp -R /usr/local/bin/myspringapp2/* myspringapp/`
 
-## Modify mychart
+## Let't take a look around and see what has changed
 
-Currently, the service is configured to run on port 80, but in the following steps, we will change the service to listen on port 8080
+1. Chart.yaml
 
-1. In `mychart/templates`, inspect the `deployment.yaml` to see that the container currently runs on port 80
+  The version has been changed to 0.2.0
 
-  `cd mychart/templates`
-
-  `cat deployment.yaml`
-
-  Look for the following lines
   ```yaml
-  containers:
-    - name: {{ .Chart.Name }}
-      securityContext:
-        {{- toYaml .Values.securityContext | nindent 12 }}
-      image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-      imagePullPolicy: {{ .Values.image.pullPolicy }}
-      ports:
-        - name: http
-          containerPort: 80
-          protocol: TCP
+  apiVersion: v1
+  appVersion: "1.0"
+  description: A Helm chart for myspringapp
+  name: myspringapp
+  version: 0.2.0
   ```
 
-  You will modify **containerPort: 80** to **containerPort: 8080**
+1. values.yaml
 
-1. Use the following commands to navigate to `/usr/local/bin/` and inspect and copy the `deployment.yaml` to overwrite the existing file
+  A few more values have been added to support the Service
 
-  `cd /usr/local/bin/`{{execute}}
-
-  `cat deployment.yaml`
-  Here you should see that the container port has been changed to 8080
   ```yaml
-  containers:
-    - name: {{ .Chart.Name }}
-      securityContext:
-        {{- toYaml .Values.securityContext | nindent 12 }}
-      image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-      imagePullPolicy: {{ .Values.image.pullPolicy }}
-      ports:
-        - name: http
-          containerPort: 8080
-          protocol: TCP
+  spec:
+    type: ClusterIP
+    port: 8000
+    targetPort: 8181
   ```
 
-# Congrats!
+1. templates/service.yaml
 
-Congrats, you have created and installed your first chart
-Move on to the next step to learn how to modify your chart and upgrade the installation
+  Templatized Kubernetes Service configuration.
+
+  The *{{ }}* are interpolated with the definitions in the values.yaml and Chart.yaml
+
+  **.Chart** refers to anything defined in the Chart.yaml and **.Values** refers to anything defined in the values.yaml
+
+  Using this templating format, a single chart can be applied to any environment simply by providing a different set of values in the values.yaml or a different values file.
+
+  ```yaml
+  kind: Service
+  apiVersion: v1
+  metadata:
+    name: {{quote .Values.labels.AppName }}
+    labels:
+      service: {{quote .Values.labels.AppName }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/managed-by: {{ .Release.Service }}
+      AppName: {{quote .Values.labels.AppName }}
+      AppVersion: {{quote .Values.labels.AppVersion }}
+  spec:
+    selector:
+      AppName: {{quote .Values.labels.AppName }}
+    ports:
+      - port: {{ .Values.spec.port }}
+        targetPort: {{ .Values.spec.targetPort }}
+        protocol: TCP
+        name: http
+  ```
+
+## Package and Install
+
+Package the chart using **helm package**
+`helm package myspringapp`{{execute}}
+
+Check that your chart was packaged correctly
+`ls -l`{{execute}}
+You should see a file called **myspringapp-0.2.0.tgz**
+
+---
+
+Now you can upgrade your chart
+`helm upgrade myspringapp myspringapp-0.2.0.tgz`{{execute}}
+
+---
+
+Verify your chart installed
+`helm list`{{execute}}
+
+---
+
+And check the new Service component has been deployed
+`helm status myspringapp`{{execute}}
+
+## Congrats!
+
+Congrats, you have added a new component to your chart and upgraded it
+Move on to the next step to improve your chart by defining resource requests and limitations and adding liveness and readiness probes to your deployment
