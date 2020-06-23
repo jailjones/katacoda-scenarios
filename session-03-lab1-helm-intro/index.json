@@ -1,12 +1,12 @@
 {
-  "title": "Session 3 - Helm Charts",
-  "description": "Learning how to use Helm Charts to manage deployments to k8s",
+  "title": "Session 3 - Helm Getting Started",
+  "description": "Learn how to use Helm Charts to manage Kubernetes deployments",
   "difficulty": "Beginner",
   "time": "10-15 minutes",
   "details": {
     "steps": [
       {
-        "title": "Step 1",
+        "title": "Step 1 - Install Tools",
         "text": "step1.md"
       },
       {
